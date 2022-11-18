@@ -22,7 +22,7 @@ export default function StartGameScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#72063c',
+    backgroundColor: '#4e0329',
     marginTop: 96,
     marginHorizontal: 24,
     padding: 16,
