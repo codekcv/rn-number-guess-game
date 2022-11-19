@@ -49,8 +49,9 @@ export default function App() {
     setIsGameOver(false);
   }
 
-  function handleGameOver() {
+  function handleGameOver(totalRounds: number) {
     setIsGameOver(true);
+    setRoundsNumber(totalRounds);
   }
 
   function handleNewGame() {
