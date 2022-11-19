@@ -17,6 +17,7 @@ export default function InstructionText({ children, style }: Props) {
 const styles = StyleSheet.create({
   instruction: {
     color: COLORS.accent500,
+    fontFamily: 'open-sans',
     fontSize: 24,
   },
 });
