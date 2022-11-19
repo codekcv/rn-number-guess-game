@@ -16,9 +16,9 @@ function generateRandomBetween(
 
   if (randomNumber === exclude) {
     return generateRandomBetween(min, max, exclude);
-  } else {
-    return randomNumber;
   }
+
+  return randomNumber;
 }
 
 type Props = {
@@ -32,7 +32,7 @@ let maxBoundary = 99;
 export default function GameScreen({ userNumber, onGameOver }: Props) {
   const initialGuessNum = useMemo(
     () => generateRandomBetween(minBoundary, maxBoundary, userNumber),
-    []
+    [userNumber]
   );
 
   const [currentGuess, setCurrentGuess] = useState(initialGuessNum);
@@ -75,7 +75,7 @@ export default function GameScreen({ userNumber, onGameOver }: Props) {
 
   return (
     <View style={styles.screen}>
-      <Title>Opponent's Guess</Title>
+      <Title>Opponent&apos;s Guess</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
 
       <Card>

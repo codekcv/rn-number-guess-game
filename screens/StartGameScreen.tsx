@@ -2,9 +2,9 @@ import InstructionText from '@components/game/InstructionText';
 import Card from '@components/ui/Card';
 import PrimaryButton from '@components/ui/PrimaryButton';
 import Title from '@components/ui/Title';
-import { COLORS } from '@utils/constants';
+import COLORS from '@utils/constants';
 import { useState } from 'react';
-import { StyleSheet, Alert, TextInput, View, Text } from 'react-native';
+import { StyleSheet, Alert, TextInput, View } from 'react-native';
 
 type Props = {
   onNumberPick: (number: number) => void;
@@ -22,9 +22,9 @@ export default function StartGameScreen({ onNumberPick }: Props) {
   }
 
   function handleConfirm() {
-    const chosenNumber = parseInt(enteredNumber);
+    const chosenNumber = parseInt(enteredNumber, 10);
 
-    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+    if (Number.isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
       Alert.alert('Invalid number!', 'Must be a number between 1 to 99.', [
         {
           text: 'Okay',

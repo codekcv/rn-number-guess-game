@@ -1,14 +1,12 @@
 import GameOverScreen from '@screens/GameOverScreen';
 import GameScreen from '@screens/GameScreen';
 import StartGameScreen from '@screens/StartGameScreen';
-import { COLORS } from '@utils/constants';
 import * as Font from 'expo-font';
 import { LinearGradient } from 'expo-linear-gradient';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import { useCallback } from 'react';
+import COLORS from '@utils/constants';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -25,6 +23,7 @@ export default function App() {
           'open-sans-bold': require('@assets/fonts/OpenSans-Bold.ttf'),
         });
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.warn(e);
       } finally {
         setAppIsReady(true);

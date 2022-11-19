@@ -1,4 +1,4 @@
-import { COLORS } from '@utils/constants';
+import COLORS from '@utils/constants';
 import { ReactNode } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 

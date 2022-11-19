@@ -3,11 +3,13 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
+    "jsx": "react-jsx",
     "paths": {
       "@screens/*": ["./screens/*"],
       "@components/*": ["./components/*"],
       "@utils/*": ["./utils/*"],
       "@assets/*": ["./assets/*"]
     }
-  }
+  },
+  "include": [".eslintrc.js", "**/*.ts", "**/*.tsx", "App.tsx"]
 }
