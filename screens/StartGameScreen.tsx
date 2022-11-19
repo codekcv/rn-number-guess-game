@@ -1,7 +1,33 @@
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useState } from 'react';
+import { Pressable, StyleSheet, Alert, TextInput, View } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 
 export default function StartGameScreen() {
+  const [enteredNumber, setEnteredNumber] = useState<string>('');
+
+  function handleNumberInput(inputText: string) {
+    setEnteredNumber(inputText);
+  }
+
+  function resetInputHandler() {
+    setEnteredNumber('');
+  }
+
+  function handleConfirm() {
+    const chosenNumber = parseInt(enteredNumber);
+
+    if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
+      Alert.alert('Invalid number!', 'Must be a number between 1 to 99.', [
+        {
+          text: 'Okay',
+          style: 'destructive',
+          onPress: resetInputHandler,
+        },
+      ]);
+      return;
+    }
+  }
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -10,11 +36,18 @@ export default function StartGameScreen() {
         keyboardType="number-pad"
         autoCapitalize="none"
         autoCorrect={false}
+        value={enteredNumber}
+        onChangeText={handleNumberInput}
       />
 
-      <View>
-        <PrimaryButton>Reset</PrimaryButton>
-        <PrimaryButton>Confirm</PrimaryButton>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton onPress={resetInputHandler}>Reset</PrimaryButton>
+        </View>
+
+        <View style={styles.buttonContainer}>
+          <PrimaryButton onPress={handleConfirm}>Confirm</PrimaryButton>
+        </View>
       </View>
     </View>
   );
@@ -22,7 +55,9 @@ export default function StartGameScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#4e0329',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#3b021f',
     marginTop: 96,
     marginHorizontal: 24,
     padding: 16,
@@ -43,5 +78,14 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     textAlign: 'center',
     fontWeight: 'bold',
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 12,
+    width: '100%',
+  },
+  buttonContainer: {
+    width: '40%',
   },
 });
