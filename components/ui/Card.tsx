@@ -1,5 +1,5 @@
 import COLORS from '@utils/constants';
-import isSmallDevice from '@utils/deviceWidth';
+import { isSmallScreenWidth } from '@utils/isSmallScreen';
 import { StyleSheet, View } from 'react-native';
 
 type Props = {
@@ -15,7 +15,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.primary800,
-    marginTop: isSmallDevice ? 18 : 36,
+    marginTop: isSmallScreenWidth ? 18 : 36,
     marginHorizontal: 24,
     padding: 16,
     borderRadius: 8,

@@ -4,7 +4,13 @@ import Card from '@components/ui/Card';
 import PrimaryButton from '@components/ui/PrimaryButton';
 import Title from '@components/ui/Title';
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, FlatList, StyleSheet, View } from 'react-native';
+import {
+  Alert,
+  FlatList,
+  StyleSheet,
+  useWindowDimensions,
+  View,
+} from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import GuessItemLog from '@components/game/GuessItemLog';
 
@@ -41,6 +47,8 @@ export default function GameScreen({ userNumber, onGameOver }: Props) {
 
   const [currentGuess, setCurrentGuess] = useState(initialGuessNum);
   const [guessRounds, setGuessRounds] = useState([initialGuessNum]);
+
+  const { height } = useWindowDimensions();
 
   useEffect(() => {
     if (currentGuess === userNumber) {
@@ -84,10 +92,19 @@ export default function GameScreen({ userNumber, onGameOver }: Props) {
     setGuessRounds((prevGuessRound) => [newRndNum, ...prevGuessRound]);
   }
 
+  const respFlexDirection = height < 380 ? 'row' : 'column';
+
   return (
     <View style={styles.screen}>
-      <Title>Opponent&apos;s Guess</Title>
-      <NumberContainer>{currentGuess}</NumberContainer>
+      <View
+        style={{
+          flexDirection: respFlexDirection,
+          alignItems: 'center',
+        }}
+      >
+        <Title>Opponent&apos;s Guess</Title>
+        <NumberContainer>{currentGuess}</NumberContainer>
+      </View>
 
       <Card>
         <InstructionText style={styles.instruction}>
