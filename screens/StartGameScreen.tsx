@@ -28,6 +28,7 @@ export default function StartGameScreen({ onNumberPick }: Props) {
           onPress: resetInputHandler,
         },
       ]);
+
       return;
     }
 
