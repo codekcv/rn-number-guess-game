@@ -1,3 +1,4 @@
+import GameOverScreen from '@screens/GameOverScreen';
 import GameScreen from '@screens/GameScreen';
 import StartGameScreen from '@screens/StartGameScreen';
 import { COLORS } from '@utils/constants';
@@ -6,16 +7,26 @@ import { useState } from 'react';
 import { StyleSheet, ImageBackground, SafeAreaView } from 'react-native';
 
 export default function App() {
-  const [userNumber, setUserNumber] = useState<number | null>(1);
+  const [userNumber, setUserNumber] = useState<number | null>(null);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   function handlePickedNumber(pickedNumber: number) {
     setUserNumber(pickedNumber);
+    setIsGameOver(false);
+  }
+
+  function handleGameOver() {
+    setIsGameOver(true);
   }
 
   let screen = <StartGameScreen onNumberPick={handlePickedNumber} />;
 
   if (userNumber) {
-    screen = <GameScreen userNumber={userNumber} />;
+    screen = <GameScreen userNumber={userNumber} onGameOver={handleGameOver} />;
+  }
+
+  if (isGameOver) {
+    screen = <GameOverScreen />;
   }
 
   return (
