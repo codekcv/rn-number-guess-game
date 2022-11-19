@@ -1,8 +1,11 @@
+import InstructionText from '@components/game/InstructionText';
 import NumberContainer from '@components/game/NumberContainer';
+import Card from '@components/ui/Card';
 import PrimaryButton from '@components/ui/PrimaryButton';
 import Title from '@components/ui/Title';
 import { useEffect, useMemo, useState } from 'react';
-import { Alert, StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 function generateRandomBetween(
   min: number,
@@ -73,22 +76,27 @@ export default function GameScreen({ userNumber, onGameOver }: Props) {
   return (
     <View style={styles.screen}>
       <Title>Opponent's Guess</Title>
-      {/* GUESS */}
       <NumberContainer>{currentGuess}</NumberContainer>
 
-      <View>
-        <Text>Higher or lower?</Text>
+      <Card>
+        <InstructionText style={styles.instruction}>
+          Higher or lower?
+        </InstructionText>
 
-        <View>
-          <PrimaryButton onPress={handleNextGuess.bind(null, 'lower')}>
-            -
-          </PrimaryButton>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={handleNextGuess.bind(null, 'lower')}>
+              <Ionicons name="md-remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
 
-          <PrimaryButton onPress={handleNextGuess.bind(null, 'greater')}>
-            +
-          </PrimaryButton>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={handleNextGuess.bind(null, 'greater')}>
+              <Ionicons name="md-add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
         </View>
-      </View>
+      </Card>
 
       <View>{/* LOG ROUNDS */}</View>
     </View>
@@ -99,5 +107,15 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+  },
+  instruction: { marginBottom: 12 },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    marginTop: 12,
+    width: '100%',
+  },
+  buttonContainer: {
+    width: '40%',
   },
 });
