@@ -1,7 +1,7 @@
+import PrimaryButton from '@components/ui/PrimaryButton';
 import { COLORS } from '@utils/constants';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Alert, TextInput, View } from 'react-native';
-import PrimaryButton from '../components/PrimaryButton';
+import { StyleSheet, Alert, TextInput, View } from 'react-native';
 
 type Props = {
   onNumberPick: (number: number) => void;
