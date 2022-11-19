@@ -1,3 +1,4 @@
+import { COLORS } from '@utils/constants';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Alert, TextInput, View } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3b021f',
+    backgroundColor: COLORS.primary800,
     marginTop: 96,
     marginHorizontal: 24,
     padding: 16,
@@ -79,9 +80,9 @@ const styles = StyleSheet.create({
     height: 54,
     width: 54,
     fontSize: 32,
-    borderBottomColor: '#ddb52f',
+    borderBottomColor: COLORS.accent500,
     borderBottomWidth: 2,
-    color: '#ddb52f',
+    color: COLORS.accent500,
     marginVertical: 8,
     textAlign: 'center',
     fontWeight: 'bold',
