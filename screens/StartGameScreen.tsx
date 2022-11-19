@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, Alert, TextInput, View } from 'react-native';
 import PrimaryButton from '../components/PrimaryButton';
 
-export default function StartGameScreen() {
+type Props = {
+  onNumberPick: (number: number) => void;
+};
+
+export default function StartGameScreen({ onNumberPick }: Props) {
   const [enteredNumber, setEnteredNumber] = useState<string>('');
 
   function handleNumberInput(inputText: string) {
@@ -26,6 +30,8 @@ export default function StartGameScreen() {
       ]);
       return;
     }
+
+    onNumberPick(chosenNumber);
   }
 
   return (
