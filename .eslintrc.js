@@ -22,6 +22,7 @@ module.exports = {
     // -- React
     'react/react-in-jsx-scope': 'off',
     'react/jsx-no-bind': 'off',
+    'react/style-prop-object': 'off',
 
     // -- TypeScript
     '@typescript-eslint/no-use-before-define': 'off',

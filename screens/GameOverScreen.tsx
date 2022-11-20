@@ -1,5 +1,4 @@
 import PrimaryButton from '@components/ui/PrimaryButton';
-import Title from '@components/ui/Title';
 import COLORS from '@utils/constants';
 import { isSmallScreenWidth } from '@utils/isSmallScreen';
 import {
@@ -10,6 +9,7 @@ import {
   View,
 } from 'react-native';
 import type { ViewStyle } from 'react-native';
+import Title from '@components/ui/Title';
 
 type Props = {
   roundsNumber: number;
@@ -24,8 +24,8 @@ export default function GameOverScreen({
 }: Props) {
   const { width, height } = useWindowDimensions();
 
-  const respDisplay = height < 380 ? 'none' : 'flex';
-  const respMarginTop = height < 380 ? 24 : 0;
+  const respDisplay = height < 400 ? 'none' : 'flex';
+  const respMarginTop = height < 400 ? 24 : 0;
 
   const respImgStyle: ViewStyle = {
     display: respDisplay,

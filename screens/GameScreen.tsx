@@ -92,7 +92,7 @@ export default function GameScreen({ userNumber, onGameOver }: Props) {
     setGuessRounds((prevGuessRound) => [newRndNum, ...prevGuessRound]);
   }
 
-  const respFlexDirection = height < 380 ? 'row' : 'column';
+  const respFlexDirection = height < 400 ? 'row' : 'column';
 
   return (
     <View style={styles.screen}>
